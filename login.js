@@ -4,7 +4,7 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
-    const response = await fetch('https://sporting-server-pmrvwpqq4-rabiul-hosens-projects.vercel.app/accounts/login/', {
+    const response = await fetch('https://sporting-server-xi.vercel.app/accounts/login/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password })

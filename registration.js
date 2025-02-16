@@ -13,7 +13,7 @@ document.getElementById('registrationForm').addEventListener('submit', async fun
         return;
     }
 
-    const response = await fetch('https://sporting-server-pmrvwpqq4-rabiul-hosens-projects.vercel.app/accounts/register/', {
+    const response = await fetch('https://sporting-server-xi.vercel.app/accounts/register/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, first_name, last_name, email, password, confirm_password })

@@ -2,7 +2,7 @@
         document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("paymentButton").addEventListener("click", function() {
 
-                fetch("http://127.0.0.1:8000/payment/pay/", {
+                fetch("https://sporting-server-xi.vercel.app/payment/pay/", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ amount: 100, currency: "BDT" }) // Add necessary data

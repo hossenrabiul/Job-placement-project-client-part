@@ -9,7 +9,7 @@ async function fetchPostDetails() {
     }
 
     try {
-        const response = await fetch(`https://sporting-server-pmrvwpqq4-rabiul-hosens-projects.vercel.app/posts/postdetail/${postId}/`);
+        const response = await fetch(`https://sporting-server-xi.vercel.app/posts/postdetail/${postId}/`);
         const post = await response.json();
         const div = document.createElement("div")
         const parent = document.getElementById("post-details")
