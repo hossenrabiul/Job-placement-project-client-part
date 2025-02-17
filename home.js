@@ -1,4 +1,4 @@
-console.log("Yes")
+// console.log("Yes")
 const baseURL = "https://sporting-server-xi.vercel.app/posts/postlist/";
 const user_id = localStorage.getItem("user_id");
 
@@ -7,7 +7,7 @@ const productLoad = () => {
   fetch(baseURL)
     .then((res) => res.json())
     .then((data) => displayProduct(data))
-    .then((data) => console.log(data))
+    // .then((data) => console.log(data))
     .catch((error) => console.error("Error fetching data:", error));
 };
 

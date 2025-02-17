@@ -20,31 +20,182 @@ const navbarLoad = () => {
 
             <!-- Right Side - User Profile & Cart -->
             <div class="flex items-center space-x-6">
-                <a href="cart.html" class="relative">
-                    <i class="fas fa-shopping-cart text-white text-xl"></i>
-                    <span class="absolute top-0 right-0 bg-red-600 text-white text-xs px-1 rounded-full">3</span>
+                <a href="cart.html" class="relative p-2 rounded-lg bg-white shadow-md hover:shadow-lg transition duration-300">
+                    <i class="fas fa-shopping-cart text-xl text-gray-800"></i>
+                    <span class="absolute -top-2 -right-2 bg-red-600 text-white text-xs px-2 py-0.5 rounded-full shadow-md">3</span>
                 </a>
-
+                
                 ${user_id ? `
-                <div class="relative">
-                    <button onclick="toggleDropdown()" class="profile-btn">
-                        <i class="fas fa-user text-lg"></i>
-                        <i class="fas fa-caret-down text-sm"></i>
+                <!-- Profile Dropdown -->
+                <div class="relative z-10" id="profile-dropdown">
+                    <button class="flex items-center space-x-2 hover:text-teal-800 transition duration-300"
+                        onclick="toggleDropdown('profile-menu')">
+                        <span>Profile</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M5.23 7.21a1 1 0 011.32-.083L10 9.584l3.45-2.457a1 1 0 011.1 1.664l-4 2.857a1 1 0 01-1.1 0l-4-2.857a1 1 0 01-.22-1.38z"
+                                clip-rule="evenodd" />
+                        </svg>
                     </button>
-
-                    <div id="dropdown-menu" class="hidden absolute right-0 mt-2 w-44 bg-white text-black rounded-lg shadow-lg overflow-hidden">
-                        <a href="profile.html" class="dropdown-item">Profile</a>
-                        <form id="logout" onsubmit="handleLogout(event)">
-                            <button type="submit" class="dropdown-item w-full text-left">Logout</button>
-                        </form>
-                    </div>
+                    <!-- Main Dropdown -->
+                   <ul id="profile-menu"
+                        class="absolute right-0 mt-2 hidden bg-white text-black shadow-lg rounded-lg py-2 w-48">
+                        <li><a href="/profile.html" class="block px-4 py-2 hover:bg-gray-100">Profile</a></li>
+                        <li><a href="#" onclick="handlelogOut()" class="block px-4 py-2 hover:bg-gray-100">Logout</a></li>
+                    </ul>
                 </div>` : `
-                <a href="login.html" class="btn-outline">Login</a>
-                <a href="registration.html" class="btn-primary">Register</a>`}
+                <nav class=" lg:flex space-x-4" id=""> 
+                <a href="/login.html" class="text-lg font-semibold  border-[1px] border-transparent hover:border-gray-500 hover:text-red-500 hover:bg-gray-200 px-4 py-3 rounded-lg transition duration-300">Login</a>
+                <a href="/registration.html" class="text-lg font-semibold  border-[1px] border-transparent hover:border-gray-500  hover:text-red-500 hover:bg-gray-200 px-4 py-3 rounded-lg transition duration-300">Register</a> 
+                </nav>`}
             </div>
         </div>
     `;
 };
 
 // Call function to load navbar
+
 navbarLoad();
+
+function toggleDropdown(menuId) {
+    const menu = document.getElementById(menuId);
+    if (menu.classList.contains('hidden')) {
+        menu.classList.remove('hidden');
+    } else {
+        menu.classList.add('hidden');
+    }
+}
+
+// Close dropdowns when clicking outside
+document.addEventListener('click', function (e) {
+    const dropdowns = document.querySelectorAll('#profile-menu, #nested-menu');
+    dropdowns.forEach((dropdown) => {
+        if (!dropdown.contains(e.target) && !dropdown.previousElementSibling.contains(e.target)) {
+            dropdown.classList.add('hidden');
+        }
+    });
+});
+
+function toggleDropdown(menuId) {
+    const menu = document.getElementById(menuId);
+    menu.classList.toggle('hidden');
+}
+ 
+
+function toggleNotificationBox() {
+    const box = document.getElementById("notification-box");
+    box.classList.toggle("hidden");
+    box.classList.toggle("scale-100");
+    box.classList.toggle("opacity-100");
+    box.classList.toggle("scale-95");
+    box.classList.toggle("opacity-0");
+}
+
+// Close dropdown when clicking outside
+window.addEventListener("click", (e) => {
+    const notificationBox = document.getElementById("notification-box");
+    if (!e.target.closest("#notification-box") && !e.target.closest("button")) {
+        notificationBox.classList.add("hidden");
+        notificationBox.classList.remove("scale-100", "opacity-100");
+        notificationBox.classList.add("scale-95", "opacity-0");
+    }
+});
+
+
+
+
+//  Notificaion box 
+const hamburgerMenu = document.getElementById('hamburger-menu');
+const mobileNav = document.getElementById('mobile-nav');
+const closeMenu = document.getElementById('close-menu');
+
+// Toggle mobile menu on hamburger click
+hamburgerMenu.addEventListener('click', () => {
+    mobileNav.classList.toggle('hidden');
+});
+
+// Close the mobile menu when close button is clicked
+closeMenu.addEventListener('click', () => {
+    mobileNav.classList.add('hidden');
+});
+
+// Close the menu when any item is clicked (optional)
+const menuItems = mobileNav.querySelectorAll('a');
+menuItems.forEach(item => {
+    item.addEventListener('click', () => {
+        mobileNav.classList.add('hidden');
+    });
+});
+ 
+
+const pushAlert = (title, description) => {
+    // Create the alert box container
+    const alertBox = document.createElement('div');
+
+    // Define the inner HTML of the alert box based on the title
+    alertBox.innerHTML = `
+        <!-- Custom Alert Modal -->
+        <div id="customAlert" class="fixed z-40 top-0 right-0 transform -translate-x-1/2 w-96 bg-white p-6 rounded-lg shadow-lg">
+            <div class="flex items-center space-x-2">
+                ${
+                    title === "success" ? `
+                        <i class="fas fa-check-circle text-green-500 text-2xl"></i>
+                        <h2 class="text-xl font-semibold text-gray-800">Success</h2>
+                    ` : title === "alert" ? `
+                        <i class="fas fa-times-circle text-red-500 text-2xl"></i>
+                        <h2 class="text-xl font-semibold text-gray-800">Alert</h2>
+                    ` : `
+                        <i class="fas fa-exclamation-circle text-yellow-500 text-2xl"></i>
+                        <h2 class="text-xl font-semibold text-gray-800">Warning</h2>`
+                }
+            </div>
+            <p class="mt-4 text-gray-700">${description}</p>
+            <div class="mt-6 flex justify-end">
+                <button onclick="closeAlert()" class="${title === 'success' ? 'bg-green-500' : title === 'alert' ? 'bg-red-600' : 'bg-yellow-700'} text-white px-4 py-2 rounded-md hover:bg-opacity-80">Close</button>
+            </div>
+        </div>
+    `;
+
+    // Append the alert box to the body
+    document.body.appendChild(alertBox);
+
+    // Make the alert visible
+    document.getElementById("customAlert").classList.remove("hidden");
+
+    // Optionally, auto-close the alert after a certain time
+    setTimeout(() => {
+        closeAlert();
+    }, 5000); // Close after 5 seconds
+}
+ 
+ 
+// Function to close the alert
+const closeAlert = () => {
+    const alertBox = document.getElementById("customAlert");
+    if (alertBox) {
+        alertBox.classList.add("hidden");
+        alertBox.remove(); // Remove the alert from DOM after closing
+    }
+} 
+
+
+const guestProfile = (guest_id) => {
+    localStorage.setItem('guest_id', guest_id);
+    window.open('/guest_profile.html', '_blank');
+  
+}
+  
+
+const is_authticated = () => {
+    
+    if (!localStorage.getItem('user_id')) {
+        window.location.href = "./login.html" 
+
+        pushAlert('warning', 'You should first login ') 
+        window.location.href = "./login.html" 
+        
+
+    }
+
+} 
+
