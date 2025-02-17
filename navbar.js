@@ -12,7 +12,7 @@ const navbarLoad = () => {
 
             <!-- Middle - Navigation Links -->
             <div class="hidden md:flex space-x-6">
-                <a href="home.html" class="nav-link">Home</a>
+                <a href="index.html" class="nav-link">Home</a>
                 <a href="products.html" class="nav-link">Products</a>
                 <a href="contact_us.html" class="nav-link">Contact</a>
                 <a href="about_us.html" class="nav-link">About Us</a>
