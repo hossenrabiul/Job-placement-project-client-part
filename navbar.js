@@ -45,7 +45,7 @@ const upperHeaderControl = () =>
             <!-- Navigation Menu (Desktop) -->
             <nav class="hidden lg:flex space-x-6 text-lg ">
                 <a href="index.html" class="hover:text-red-600  transition duration-300 ">Home</a>
-                <a href="#" class="hover:text-red-600 transition duration-300">Products</a>
+                <a href="products.html" class="hover:text-red-600 transition duration-300">Products</a>
                 <a href="contact_us.html" class="hover:text-red-600 transition duration-300">Contact</a>
                 <a href="about_us.html" class="hover:text-red-600 transition duration-300">About Us</a>
             </nav>
@@ -54,7 +54,7 @@ const upperHeaderControl = () =>
             <nav id="mobile-nav"
                 class="z-20 text-lg gap-4 text-center lg:hidden absolute top-0 left-0 right-0 bg-red-500 text-white font-smallbold p-10 space-y-4 hidden">
                 <a href="index.html" class="px-2 hover:text-gray-600 transition duration-300">Home</a>
-                <a href="#" class="px-2 hover:text-gray-600  transition duration-300">Products</a>
+                <a href="products.html" class="px-2 hover:text-gray-600  transition duration-300">Products</a>
                 <a href="contact_us.html" class="px-2 hover:text-gray-600  transition duration-300">Contact</a>
                 <a href="about_us.html" class="hover:text-red-600 transition duration-300">About Us</a>
                 
@@ -88,7 +88,7 @@ const upperHeaderControl = () =>
         <!-- Navigation Menu (Desktop) -->
         <nav class="hidden lg:flex space-x-6  ">
             <a href="index.html" class="hover:text-red-600 transition duration-300 ">Home</a>
-            <a href="#" class="hover:text-red-600 transition duration-300">Products</a>
+            <a href="products.html" class="hover:text-red-600 transition duration-300">Products</a>
             <a href="contact_us.html" class="px-2 hover:text-gray-600  transition duration-300">Contact</a>
             <a href="about_us.html" class="hover:text-red-600 transition duration-300">About Us</a>
         </nav>
@@ -97,7 +97,7 @@ const upperHeaderControl = () =>
         <nav id="mobile-nav"
             class="z-20  gap-4 text-center lg:hidden absolute top-0 left-0 right-0 bg-red-500 text-white  font-smallbold   p-10 space-y-4 hidden">
             <a href="/index.html" class="px-2 hover:text-gray-600 transition duration-300">Home</a>
-            <a href="#" class="px-2 hover:text-gray-600  transition duration-300">Products</a>
+            <a href="products.html" class="px-2 hover:text-gray-600  transition duration-300">Products</a>
             <a href="contact_us.html" class="px-2 hover:text-gray-600  transition duration-300">Contact</a>
             <a href="about_us.html" class="hover:text-red-600 transition duration-300">About Us</a>
 
