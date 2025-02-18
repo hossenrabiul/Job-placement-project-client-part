@@ -25,7 +25,7 @@ const displayProduct = (products) => {
     
     li.innerHTML = `
       <div class="relative">
-        <img src="${product.image.url}" class="w-full h-36 object-cover" loading="lazy" alt="${product.name}">
+        <img src="${product.image}" class="w-full h-36 object-cover" loading="lazy" alt="${product.name}">
         <span class="absolute top-2 right-2 bg-green-600 text-white text-xs px-2 py-1 rounded-full">Stock: ${product.storkQuantity}</span>
       </div>
       <div class="p-3 flex flex-col">

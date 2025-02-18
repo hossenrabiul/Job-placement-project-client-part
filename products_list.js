@@ -29,7 +29,7 @@ const displayProduct = (products) => {
 
     div.innerHTML = `
         <div class="bg-white shadow-lg rounded-lg p-3">
-            <img src="./images/sample-product.jpg" alt="Product Image" class="w-full h-40 object-cover rounded-lg">
+            <img src="${product.image}" alt="Product Image" class="w-full h-40 object-cover rounded-lg">
             <h2 class="text-lg font-semibold mt-3">${product.name}</h2>
             <p class="text-gray-600 text-xs mt-1">${product.descirption}</p>
             <p class="text-md font-bold text-gray-900 mt-1">$${product.price}</p>

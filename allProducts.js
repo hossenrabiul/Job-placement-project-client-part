@@ -73,7 +73,7 @@ const displayProduct = (products) => {
 
   <div class="card border-0 shadow-lg rounded-1 overflow-hidden bg-white">
   <div class="position-relative">
-    <img src="$" class="card-img-top img-fluid" loading="lazy" alt="${product.name}">
+    <img src="${product.image}" class="card-img-top img-fluid" loading="lazy" alt="${product.name}">
     <span class="badge bg-success position-absolute top-0 end-0 m-2 px-3 py-2">Stock: ${product.stock}</span>
   </div>
   
