@@ -40,10 +40,20 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body class="bg-gray-100">
-    <nav class="bg-white shadow-md py-2 px-4" id="navbarElement">
-    </nav>
-    
-    
+    <!-- <nav class="bg-white shadow-md py-2 px-4" id="navbarElement">
+    </nav> -->
+
+    <header class="bg-white shadow-md">
+      <div class="container mx-auto flex items-center justify-between px-4 py-2">
+        <div class="text-2xl font-bold text-gray-700">Sport Club</div>
+
+        <div id="upper-header-authentication"></div>
+
+        <div class="flex gap-8">
+          <div id="header-authentication"></div>
+        </div>
+      </div>
+    </header>
 
     <div class="banner">
       <div class="banner-content">
@@ -101,13 +111,25 @@
           </div>
         </div>
       </div> -->
-
     </div>
 
     <div class="relative w-full flex justify-center px-6">
-      <div class="flex gap-4 overflow-x-auto scrollbar-hide p-4 max-w-5xl" id="slider-container"></div>
-      <button class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-900 text-white p-2 rounded-full shadow-lg hover:bg-gray-700" aria-label="Go left">&#10094;</button>
-      <button class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-900 text-white p-2 rounded-full shadow-lg hover:bg-gray-700" aria-label="Go right">&#10095;</button>
+      <div
+        class="flex gap-4 overflow-x-auto scrollbar-hide p-4 max-w-5xl"
+        id="slider-container"
+      ></div>
+      <button
+        class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-900 text-white p-2 rounded-full shadow-lg hover:bg-gray-700"
+        aria-label="Go left"
+      >
+        &#10094;
+      </button>
+      <button
+        class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-900 text-white p-2 rounded-full shadow-lg hover:bg-gray-700"
+        aria-label="Go right"
+      >
+        &#10095;
+      </button>
     </div>
 
     <!-- <div
@@ -224,9 +246,7 @@
       </div>
     </div>
 
-   <footer>
-
-   </footer>
+    <footer></footer>
 
     <script>
       function toggleDropdown() {
@@ -245,7 +265,6 @@
       crossorigin="anonymous"
     ></script>
 
-
     <script src="login.js"></script>
     <script src="navbar.js"></script>
     <script src="cart.js"></script>
@@ -253,11 +272,10 @@
     <script src="home.js"></script>
     <script src="allProducts.js"></script>
     <script src="details.js"></script>
-    
+
     <script src="payment.js"></script>
     <script src="registration.js"></script>
     <script src="footer.js"></script>
     <script src="style.css"></script>
-
   </body>
 </html>
