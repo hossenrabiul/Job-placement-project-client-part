@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+
+
+
+
     <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
@@ -254,7 +258,32 @@
               </div>
           </div>  -->
       </div>
-  </div>
+    </div>
+
+    <section class="flex items-center justify-center my-16 bg-gray-100 py-12">
+      <div class="container mx-auto flex flex-col md:flex-row items-center gap-12 px-6">
+        <!-- Left: Image -->
+        <div class="relative w-full md:w-1/2 overflow-hidden">
+          <img 
+            src="https://i.ibb.co.com/wZy62tRc/Adobe-Express-file-4.png" 
+            alt="Sports Shoes" 
+            class="w-full max-w-md mx-auto transform transition-transform duration-500 hover:scale-105" 
+          />
+        </div>
+        
+        <!-- Right: Mission Text -->
+        <div class="w-full md:w-1/2 text-center md:text-left">
+          <h2 class="text-4xl font-extrabold text-gray-800 mb-6">Our Mission</h2>
+          <p class="text-lg text-gray-600 leading-relaxed">
+            We aim to provide the best sports gear to enhance performance and comfort. 
+            Our mission is to support athletes with high-quality products, innovation, and passion for sports.
+          </p>
+          <div class="mt-6">
+            <a href="#" class="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <footer></footer>
 
@@ -263,6 +292,21 @@
         document.getElementById("dropdown-menu").classList.toggle("hidden");
       }
     </script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const section = document.querySelector("section");
+    function fadeInOnScroll() {
+      const position = section.getBoundingClientRect().top;
+      const screenPosition = window.innerHeight / 1.3;
+      if (position < screenPosition) {
+        section.classList.add("opacity-100", "translate-y-0");
+      }
+    }
+    window.addEventListener("scroll", fadeInOnScroll);
+  });
+</script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/js/swiffy-slider.min.js"
