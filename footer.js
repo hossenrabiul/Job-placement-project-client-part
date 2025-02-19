@@ -17,10 +17,10 @@ document.addEventListener("DOMContentLoaded", function () {
           <div>
             <h3 class="text-lg font-semibold mb-2">Social</h3>
             <ul class="text-gray-400 space-y-2">
-              <li><a href="#" class="hover:text-white"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+              <li><a href="https://web.facebook.com/robiul.hossen.457326" class="hover:text-white"><i class="fab fa-facebook-f"></i> Facebook</a></li>
               <li><a href="#" class="hover:text-white"><i class="fab fa-twitter"></i> Twitter</a></li>
-              <li><a href="#" class="hover:text-white"><i class="fab fa-instagram"></i> Instagram</a></li>
-              <li><a href="#" class="hover:text-white"><i class="fab fa-linkedin-in"></i> LinkedIn</a></li>
+              <li><a href="https://github.com/hossenrabiul" class="hover:text-white"><i class="fab fa-linkdin"></i> Instagram</a></li>
+              <li><a href="https://www.linkedin.com/in/rabiul-hossen-8249b5297/" class="hover:text-white"><i class="fab fa-linkedin-in"></i> LinkedIn</a></li>
             </ul>
           </div>
   
@@ -39,10 +39,10 @@ document.addEventListener("DOMContentLoaded", function () {
           <!-- Fourth Column: Contact -->
           <div>
             <h3 class="text-lg font-semibold mb-2">Contact</h3>
-            <p class="text-gray-400">Your Name</p>
-            <p class="text-gray-400">123 Street, City</p>
-            <p class="text-gray-400">+123 456 7890</p>
-            <p class="text-gray-400">your.email@example.com</p>
+            <p class="text-gray-400">Rabiul Hosen</p>
+            <p class="text-gray-400">Boalkhali, Chittagong</p>
+            <p class="text-gray-400">01823780816</p>
+            <p class="text-gray-400">robiulhossen0081@gmail.com</p>
           </div>
         </div>
       </div>

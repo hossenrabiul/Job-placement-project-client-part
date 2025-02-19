@@ -58,7 +58,7 @@ const displayProduct = (products) => {
     div.innerHTML = `
 
         <div class="bg-white shadow-lg rounded-lg flex items-center p-4 max-w-sm mx-auto">
-                <img src="./images/sample-product.jpg" alt="Product Image" class="w-28 h-28 object-cover rounded-lg">
+                <img src="${product.image}" alt="Product Image" class="w-28 h-28 object-cover rounded-lg">
                 <div class="ml-4">
                     <h2 class="text-lg font-semibold">${product.name}</h2>
                     <p class="text-gray-600 text-sm">${product.descirption}</p>
