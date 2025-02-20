@@ -1,6 +1,6 @@
 document.getElementById('loginForm').addEventListener('submit', async function(event) {
     event.preventDefault();
-    console.log("Yes")
+    // console.log("Yes")
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
@@ -8,6 +8,7 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password })
+        
     });
 
     const data = await response.json();
@@ -17,6 +18,7 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
         document.getElementById('message').classList.remove('text-red-600');
         document.getElementById('message').classList.add('text-green-600');
     } else {
+        console.log("Ye")
         document.getElementById('message').textContent = data.error || "Login failed!";
     }
 });

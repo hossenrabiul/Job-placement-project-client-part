@@ -1,3 +1,33 @@
+// const token = localStorage.getItem("token")
+
+const username = localStorage.getItem("username");
+const password = localStorage.getItem("password");
+fetch("http://127.0.0.1:8000/accounts/login/", {
+    
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        username: "admin",  // Replace with actual username
+        password: "123" // Replace with actual password
+    })
+})
+.then(response => response.json())
+.then(data => {
+    if (data.token) {
+        localStorage.setItem("token", data.token);  // ✅ Store token
+        console.log("Token received:", data.token);
+    } else {
+        console.error("Login failed:", data);
+    }
+})
+.catch(error => console.error("Error:", error));
+
+
+
+
+
 
 const toggleButton = () => {
     const themeToggleButton = document.getElementById("theme-toggle");
@@ -21,12 +51,21 @@ const toggleButton = () => {
         }
     });
 }; 
+
 // header control
+// if (token){
+//     console.log("Yes");
+// }
+// else{
+//     console.log("No")
+// }
+
 const upperHeaderControl = () =>
 {
     const upperHeaderAuthentication = document.getElementById('upper-header-authentication');
     if ('token' in localStorage)
     {
+
 
         upperHeaderAuthentication.innerHTML = 
             `
@@ -187,6 +226,7 @@ const downHeaderControl = () => {
     }
     else
     {  
+        console.log("No")
         headerAuthentication.innerHTML =
         `
             <nav class=" lg:flex space-x-4" id=""> 
