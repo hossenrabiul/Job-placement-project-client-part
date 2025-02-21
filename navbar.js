@@ -1,32 +1,59 @@
 // const token = localStorage.getItem("token")
 
-const username = localStorage.getItem("username");
-const password = localStorage.getItem("password");
+// const username = localStorage.getItem("username");
+// const password = localStorage.getItem("password");
 
-fetch("https://sporting-server-xi.vercel.app/accounts/login/", {
+// fetch("https://sporting-server-xi.vercel.app/accounts/login/", {
     
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-        username: "admin",  // Replace with actual username
-        password: "123" // Replace with actual password
-    })
-})
-.then(response => response.json())
-.then(data => {
-    if (data.token) {
-        localStorage.setItem("token", data.token);  // ✅ Store token
-        console.log("Token received:", data.token);
-    } else {
-        console.error("Login failed:", data);
-    }
-})
-.catch(error => console.error("Error:", error));
+//     method: "POST",
+//     headers: {
+//         "Content-Type": "application/json"
+//     },
+//     body: JSON.stringify({
+//         username: "admin",  // Replace with actual username
+//         password: "123" // Replace with actual password
+//     })
+// })
+// .then(response => response.json())
+// .then(data => {
+//     if (data.token) {
+//         localStorage.setItem("token", data.token);  // ✅ Store token
+//         console.log("Token received:", data.token);
+//     } else {
+//         console.error("Login failed:", data);
+//     }
+// })
+// .catch(error => console.error("Error:", error));
 
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the form from submitting the traditional way
 
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
 
+        fetch("https://sporting-server-xi.vercel.app/accounts/login/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                username: username,
+                password: password
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.token) {
+                localStorage.setItem("token", data.token);  // ✅ Store token
+                console.log("Token received:", data.token);
+            } else {
+                console.error("Login failed:", data);
+            }
+        })
+        .catch(error => console.error("Error:", error));
+    });
+});
 
 
 
