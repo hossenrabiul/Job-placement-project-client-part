@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
         row.innerHTML = `
           <td> 
             <div class="d-flex align-items-center">
-              <img src="${product.image}" alt="${product.name}" class="img-fluid" style="height: 80px; width: auto;">
+              
               <span class="ms-3">${product.name}</span>
             </div>
           </td>

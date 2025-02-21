@@ -36,7 +36,7 @@ const displayProduct = (products) => {
             <p class="text-yellow-500 mt-1">${product.rating}</p>
             <div class="flex justify-between mt-3">
                 <a href="details.html?id=${product.id}" class="bg-gray-600 text-white px-3 py-1.5 rounded-lg hover:bg-gray-700 text-sm">Details</a>
-                <button class="bg-blue-600 text-white px-3 py-1.5 rounded-lg hover:bg-blue-700 text-sm" data-id="${product.id}" data-name="${product.name}" data-price="${product.price}">Add To Cart</button>
+                <button class="bg-blue-600 text-white px-3 py-1.5 rounded-lg hover:bg-blue-700 text-sm add-to-cart" data-id="${product.id}" data-name="${product.name}" data-price="${product.price}">Add To Cart</button>
             </div>
         </div>
     `;
@@ -66,7 +66,7 @@ const displayProduct = (products) => {
                     <p class="text-yellow-500 text-sm">${product.rating}</p>
                     <div class="flex justify-between mt-2 gap-2">
                         <a href="details.html?id=${product.id}" class="bg-gray-600 text-white px-2 py-1 text-xs rounded-lg hover:bg-gray-700">Details</a>
-                        <button class="bg-blue-600 text-white px-2 py-1 text-xs rounded-lg hover:bg-blue-700" data-id="${product.id}" data-name="${product.name}" data-price="${product.price}">
+                        <button class="bg-blue-600 text-white px-2 py-1 text-xs rounded-lg hover:bg-blue-700 add-to-cart" data-id="${product.id}" data-image = "${product.image}"  data-name="${product.name}" data-price="${product.price}" data-stock="${product.storkQuantity}">
                             Add To Cart
                         </button>
                     </div>
@@ -75,7 +75,41 @@ const displayProduct = (products) => {
     `;
     secondParent.appendChild(div);
   });
+
+  document.querySelectorAll(".add-to-cart").forEach((button) => {
+    console.log("Yes")
+    button.addEventListener("click", (event) => {
+      const product = {
+        id: event.target.dataset.id,
+        image : event.target.dataset.image,
+        name: event.target.dataset.name,
+        price: parseFloat(event.target.dataset.price),
+        stock: parseInt(event.target.dataset.storkQuantity),
+        quantity: 1, // Default quantity
+      };
+      addToCart(product);
+    });
+  });
+
 }
+
+const addToCart = (product) => {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const existingProduct = cart.find((item) => item.id === product.id);
+
+  if (existingProduct) {
+    if (existingProduct.quantity < product.storkQuantity) {
+      existingProduct.quantity++;
+    } else {
+      alert("No more stock available!");
+    }
+  } else {
+    cart.push(product);
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert(`${product.name} added to cart!`);
+};
 
 
 productLoad();

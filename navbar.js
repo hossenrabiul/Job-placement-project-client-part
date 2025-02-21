@@ -2,7 +2,8 @@
 
 const username = localStorage.getItem("username");
 const password = localStorage.getItem("password");
-fetch("http://127.0.0.1:8000/accounts/login/", {
+
+fetch("https://sporting-server-xi.vercel.app/accounts/login/", {
     
     method: "POST",
     headers: {
@@ -52,13 +53,6 @@ const toggleButton = () => {
     });
 }; 
 
-// header control
-// if (token){
-//     console.log("Yes");
-// }
-// else{
-//     console.log("No")
-// }
 
 const upperHeaderControl = () =>
 {
@@ -172,6 +166,23 @@ const downHeaderControl = () => {
         <div>
             <!-- Right Section -->
             <div class="flex items-center space-x-4 relative">
+                
+                
+                <!-- Cart Icon -->
+                <a href="cart.html" class="relative">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                    class="w-8 h-8 text-blue-600 cursor-pointer">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M2.25 3h1.636c.445 0 .86.282 1.02.707l.878 2.607a1.125 1.125 0 001.069.786h10.834a1.125 1.125 0 001.069-.786l.878-2.607A1.125 1.125 0 0120.114 3H21.75m-3 6.75h-12M6 18.75a.75.75 0 101.5 0m9 0a.75.75 0 101.5 0m-12-3.75h12m-12 0L5.25 9m12 6 1.5-6">
+                        </path>
+                    </svg>
+                    <span class="absolute -top-1 -right-2 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
+                        3
+                    </span>
+                </a>
+
+
+
                 <!-- Notification Icon -->
                 <div class="relative">
                     <button onclick="toggleNotificationBox()" class="relative hover:scale-105 transition duration-300">
@@ -214,7 +225,7 @@ const downHeaderControl = () => {
                     <!-- Main Dropdown -->
                     <ul id="profile-menu"
                         class="absolute right-0 mt-2 hidden bg-white text-black shadow-lg rounded-lg py-2 w-48">
-                        <li><a href="profile.html" class="block px-4 py-2 hover:bg-gray-100">Profile</a></li>
+                        <li><a href="proflle.html" class="block px-4 py-2 hover:bg-gray-100">Profile</a></li>
                         <li><a href="#" onclick="handlelogOut()" class="block px-4 py-2 hover:bg-gray-100">Logout</a></li>
                     </ul>
                 </div>
