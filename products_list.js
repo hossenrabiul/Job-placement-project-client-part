@@ -77,7 +77,7 @@ const displayProduct = (products) => {
   });
 
   document.querySelectorAll(".add-to-cart").forEach((button) => {
-    console.log("Yes")
+    // console.log("Yes")
     button.addEventListener("click", (event) => {
       const product = {
         id: event.target.dataset.id,
