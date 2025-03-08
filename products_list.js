@@ -1,13 +1,20 @@
 
-const baseURL = "https://sporting-server-xi.vercel.app/posts/postlist/";
+// const baseURL = "https://sporting-server-xi.vercel.app/posts/postlist/";
+// const baseURL = `http://127.0.0.1:8000/posts/postlist/?search=${search?search : ""}`;
 const user_id = localStorage.getItem("user_id");
 
 // console.log(user_id); 
-const productLoad = () => {
-  fetch(baseURL)
+const productLoad = (slug) => {
+
+  const parent = document.getElementById("products-details").innerHTML = "";
+  // fetch(`https://sporting-server-xi.vercel.app/posts/postlist/${slug}/`)
+  fetch(`https://sporting-server-xi.vercel.app/posts/postlist/${slug ? slug + '/' : ''}`)
+    
     .then((res) => res.json())
-    .then((data) => displayProduct(data))
     // .then((data) => console.log(data))
+    .then((data) => displayProduct(data))
+   
+    .then((data) => console.log(data))
     .catch((error) => console.error("Error fetching data:", error));
 };
 
@@ -118,22 +125,43 @@ productLoad();
 
 
 
+document.addEventListener("DOMContentLoaded", function () {
+  fetchCategories();
+});
 
+function fetchCategories() {
+  fetch("https://sporting-server-xi.vercel.app/category/categoryView/") // Replace with your actual API URL
+      .then(response => response.json())
+      .then(categories => {
+          const dropdown = document.getElementById("category-dropdown").querySelector("ul");
+          dropdown.innerHTML = ""; // Clear previous categories
 
+          categories.forEach(category => {
+              const listItem = document.createElement("li");
+              listItem.classList.add("hover:bg-gray-100", "px-4", "py-2", "cursor-pointer");
+              listItem.textContent = category.name
+            
+              listItem.addEventListener("click", function () {
+                  console.log(`Selected category: ${category.name}`);
+                  productLoad(category.slug)
+              });
+              dropdown.appendChild(listItem);
+          });
 
+          // Show dropdown on button click
+          const categoryBtn = document.getElementById("category-btn");
+          categoryBtn.addEventListener("click", function () {
+              // console.log("ye")
+              dropdown.parentElement.classList.toggle("hidden");
+          });
 
-
-// <div class="bg-white shadow-lg rounded-lg p-4">
-//                 <img src="./images/sample-product.jpg" alt="Product Image" class="w-full h-48 object-cover rounded-lg">
-//                 <h2 class="text-xl font-semibold mt-4"></h2>
-//                 <p class="text-gray-600 text-sm mt-2"></p>
-//                 <p class="text-lg font-bold text-gray-900 mt-2"></p>
-//                 <p class="text-yellow-500 mt-2">⭐⭐⭐⭐☆</p>
-//                 <div class="flex justify-between mt-4">
-//                     <a href="details.html?id=${product.id}" class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700"> Details</a>
-
-//                     <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700" data-id="${product.id}" data-name="${product.name}" data-price="${product.price}">
-//                      Add To Cart
-//                     </button>
-//                 </div>
-//     </div>
+          // Hide dropdown when clicking outside
+          // document.addEventListener("click", function (event) {
+          //     if (!dropdown.parentElement.contains(event.target)) {
+          //         console.log("No")
+          //         dropdown.parentElement.classList.add("hidden");
+          //     }
+          // });
+      })
+      .catch(error => console.error("Error fetching categories:", error));
+}

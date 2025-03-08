@@ -14,9 +14,9 @@ function fetchCategories() {
                 const listItem = document.createElement("li");
                 listItem.classList.add("hover:bg-gray-100", "px-4", "py-2", "cursor-pointer");
                 listItem.textContent = category.name;
-                listItem.addEventListener("click", function () {
-                    console.log(`Selected category: ${category.name}`);
-                });
+                // listItem.addEventListener("click", function () {
+                //     console.log(`Selected category: ${category.name}`);
+                // });
                 dropdown.appendChild(listItem);
             });
 
@@ -28,12 +28,12 @@ function fetchCategories() {
             });
 
             // Hide dropdown when clicking outside
-            // document.addEventListener("click", function (event) {
-            //     if (!dropdown.parentElement.contains(event.target)) {
-            //         console.log("No")
-            //         dropdown.parentElement.classList.add("hidden");
-            //     }
-            // });
+            document.addEventListener("click", function (event) {
+                if (!dropdown.parentElement.contains(event.target)) {
+                    console.log("No")
+                    dropdown.parentElement.classList.add("hidden");
+                }
+            });
         })
         .catch(error => console.error("Error fetching categories:", error));
 }
