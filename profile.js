@@ -1,7 +1,7 @@
 async function fetchUserProfile() {
     const token = localStorage.getItem("token");  // Retrieve stored JWT token
     console.log(token)
-    const response = await fetch("http://127.0.0.1:8000/accounts/profile/", {
+    const response = await fetch("https://sporting-server-xi.vercel.app/accounts/profile/", {
         method: "GET",
         headers: {
             Authorization: `Token ${token}`,
