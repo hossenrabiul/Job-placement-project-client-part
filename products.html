@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Products</title>
+    <link rel="stylesheet" href="style.css">
     <script src="https://cdn.tailwindcss.com"></script>
+
 </head>
 <body class="bg-gray-100">
     <header class="bg-white shadow-md">
@@ -19,7 +21,7 @@
       </div>
   </header>
 
-    <div class="container mx-auto px-6">
+    <!-- <div class="container mx-auto px-6">
         <h1 class="text-4xl font-bold text-center text-gray-800 mb-6 mt-6">Our Products</h1>
         <div class="relative inline-block text-left mb-10">
             <button id="category-btn" class="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg shadow hover:bg-gray-300 transition duration-300 flex items-center">
@@ -27,40 +29,47 @@
             </button>
             <div id="category-dropdown" class="absolute hidden bg-white shadow-md mt-2 w-56 rounded-lg overflow-hidden z-10">
                 <ul class="divide-y divide-gray-300">
-                    <!-- Categories will be loaded here dynamically -->
+                 
                 </ul>
             </div>
         </div>
+    </div> -->
 
-        <div id="products-details" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        
-            <!-- Product Card -->
-            <!-- <div class="bg-white shadow-lg rounded-lg p-4">
-                <img src="./images/sample-product.jpg" alt="Product Image" class="w-full h-48 object-cover rounded-lg">
-                <h2 class="text-xl font-semibold mt-4">Product Title</h2>
-                <p class="text-gray-600 text-sm mt-2">Short product description goes here.</p>
-                <p class="text-lg font-bold text-gray-900 mt-2">$25.99</p>
-                <p class="text-yellow-500 mt-2">⭐⭐⭐⭐☆</p>
-                <div class="flex justify-between mt-4">
-                    <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Add to Cart</button>
-                    <button class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700">Details</button>
-                </div>
-            </div> -->
-            <!-- <div class="bg-white shadow-lg rounded-lg p-4">
-                <img src="./images/sample-product.jpg" alt="Product Image" class="w-full h-48 object-cover rounded-lg">
-                <h2 class="text-xl font-semibold mt-4">Product Title</h2>
-                <p class="text-gray-600 text-sm mt-2">Short product description goes here.</p>
-                <p class="text-lg font-bold text-gray-900 mt-2">$25.99</p>
-                <p class="text-yellow-500 mt-2">⭐⭐⭐⭐☆</p>
-                <div class="flex justify-between mt-4">
-                    <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Add to Cart</button>
-                    <button class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700">Details</button>
-                </div>
-            </div> -->
-           
 
-            <!-- Repeat the above product card for more products -->
+    <div class="container mx-auto px-6">
+        <h1 class="text-4xl font-bold text-center text-gray-800 m-6">Our Products</h1>
+    
+        <!-- Flexbox layout for category and search field -->
+        <div class="flex items-center space-x-4 max-w-2xl mx-auto mb-6">
+            <!-- Category Button -->
+            <div class="relative inline-block text-left">
+                <button id="category-btn" class="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg shadow hover:bg-gray-300 transition duration-300 flex items-center">
+                    All Categories ▼
+                </button>
+                <div id="category-dropdown" class="absolute hidden bg-white shadow-md mt-2 w-56 rounded-lg overflow-hidden z-10">
+                    <ul class="divide-y divide-gray-300">
+                        <!-- Categories will be loaded here dynamically -->
+                    </ul>
+                </div>
+            </div>
+    
+            <!-- Search Field -->
+            <div class="flex-1">
+                <div class="search-box flex">
+                    <input type="text" placeholder="Search products..." class="search-input flex-1 px-4 py-2 border rounded-l-lg">
+                    <button class="search-button bg-blue-600 text-white px-4 py-2 rounded-r-lg hover:bg-blue-700 transition">
+                        Search
+                    </button>
+                </div>
+            </div>
         </div>
+
+        <div id="products-details" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"></div>
+    </div>
+    
+
+    
+        
 
     </div>
 
@@ -68,59 +77,65 @@
     <div class="container mx-auto px-4 py-8">
         <h2 class="text-3xl font-bold text-center mb-6">New Arrivals</h2>
         <div id="new-arrival" class="grid grid-cols-1 md:grid-cols-3 gap-4 justify-center">
-            <!-- <div class="bg-white shadow-lg rounded-lg flex items-center p-4 max-w-sm mx-auto">
-                <img src="./images/sample-product.jpg" alt="Product Image" class="w-28 h-28 object-cover rounded-lg">
-                <div class="ml-4">
-                    <h2 class="text-lg font-semibold">${product.name}</h2>
-                    <p class="text-gray-600 text-sm">${product.descirption}</p>
-                    <p class="text-lg font-bold text-gray-900">$${product.price}</p>
-                    <p class="text-yellow-500 text-sm">⭐⭐⭐⭐☆</p>
-                    <div class="flex justify-between mt-2">
-                        <a href="details.html?id=${product.id}" class="bg-gray-600 text-white px-2 py-1 text-xs rounded-lg hover:bg-gray-700">Details</a>
-                        <button class="bg-blue-600 text-white px-2 py-1 text-xs rounded-lg hover:bg-blue-700" data-id="${product.id}" data-name="${product.name}" data-price="${product.price}">
-                            Add To Cart
-                        </button>
-                    </div>
-                </div>
-            </div>  -->
-            <!-- <div class="bg-white shadow-lg rounded-lg flex items-center p-4 max-w-sm mx-auto">
-                <img src="./images/sample-product.jpg" alt="Product Image" class="w-28 h-28 object-cover rounded-lg">
-                <div class="ml-4">
-                    <h2 class="text-lg font-semibold">${product.name}</h2>
-                    <p class="text-gray-600 text-sm">${product.descirption}</p>
-                    <p class="text-lg font-bold text-gray-900">$${product.price}</p>
-                    <p class="text-yellow-500 text-sm">⭐⭐⭐⭐☆</p>
-                    <div class="flex justify-between mt-2">
-                        <a href="details.html?id=${product.id}" class="bg-gray-600 text-white px-2 py-1 text-xs rounded-lg hover:bg-gray-700">Details</a>
-                        <button class="bg-blue-600 text-white px-2 py-1 text-xs rounded-lg hover:bg-blue-700" data-id="${product.id}" data-name="${product.name}" data-price="${product.price}">
-                            Add To Cart
-                        </button>
-                    </div>
-                </div>
-            </div>  -->
-            <!-- <div class="bg-white shadow-lg rounded-lg flex items-center p-4 max-w-sm mx-auto">
-                <img src="./images/sample-product.jpg" alt="Product Image" class="w-28 h-28 object-cover rounded-lg">
-                <div class="ml-4">
-                    <h2 class="text-lg font-semibold">${product.name}</h2>
-                    <p class="text-gray-600 text-sm">${product.descirption}</p>
-                    <p class="text-lg font-bold text-gray-900">$${product.price}</p>
-                    <p class="text-yellow-500 text-sm">⭐⭐⭐⭐☆</p>
-                    <div class="flex justify-between mt-2">
-                        <a href="details.html?id=${product.id}" class="bg-gray-600 text-white px-2 py-1 text-xs rounded-lg hover:bg-gray-700">Details</a>
-                        <button class="bg-blue-600 text-white px-2 py-1 text-xs rounded-lg hover:bg-blue-700" data-id="${product.id}" data-name="${product.name}" data-price="${product.price}">
-                            Add To Cart
-                        </button>
-                    </div>
-                </div>
-            </div>  -->
         </div>
     </div>
+
+    <section class="new-arrival-section">
+        <h2 class="new-arrival-headline">New Arrival</h2>
+        <div class="product-grid">
+          <!-- Product 1 -->
+          <div class="product">
+            <img src="./images/product-img/new-arrival/17-copyright-1024x1024.jpg" alt="17-copyright-1024x1024" border="0">
+            <div class="product-name">HIGH TRAINING SHOCKS</div>
+            <div class="product-price">
+              <span class="original-price">$50.00</span>
+              <span class="discounted-price">$39.99</span>
+            </div>
+            <div class="product-rating">⭐⭐⭐⭐☆</div>
+          </div>
+    
+          <!-- Product 2 -->
+          <div class="product">
+            <img src="https://i.ibb.co.com/4wLFMjfS/18-copyright-1024x1024.jpg" alt="18-copyright-1024x1024" border="0">
+            <div class="product-name">SEMI-BRUSHED PANTS</div>
+            <div class="product-price">
+              <span class="original-price">$60.00</span>
+              <span class="discounted-price">$49.99</span>
+            </div>
+            <div class="product-rating">⭐⭐⭐⭐⭐</div>
+          </div>
+    
+          <!-- Product 3 -->
+          <div class="product">
+            <img src="https://i.ibb.co.com/pr1D5xWK/20-copyright-1024x1024.jpg" alt="20-copyright-1024x1024" border="0">
+            <div class="product-name">ULTRABOOST T-SHIRT</div>
+            <div class="product-price">
+              <span class="original-price">$70.00</span>
+              <span class="discounted-price">$59.99</span>
+            </div>
+            <div class="product-rating">⭐⭐⭐☆☆</div>
+          </div>
+    
+          <!-- Product 4 -->
+          <div class="product">
+            <img src="https://i.ibb.co.com/SwJMHk2m/22-copyright-1024x1024.jpg" alt="22-copyright-1024x1024" border="0">
+            <div class="product-name">FOOTBALL SHORTS</div>
+            <div class="product-price">
+              <span class="original-price">$80.00</span>
+              <span class="discounted-price">$69.99</span>
+            </div>
+            <div class="product-rating">⭐⭐⭐⭐☆</div>
+          </div>
+        </div>
+      </section>
+
     <footer>
         
     </footer>
 
     <script src="navbar.js"></script>
     <script src="products_list.js"></script>
+    <script src="newProducts.js"></script>
     <script src="footer.js"></script>
 
 </html>
