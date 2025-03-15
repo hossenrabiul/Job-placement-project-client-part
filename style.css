@@ -40,44 +40,135 @@ body {
     background-color: #f39c12;
 }
 .banner {
-    background: url('./images/bag-img.jpg') no-repeat center center/cover;
-    height: 300px;
-    width: 80%;
-    margin: 20px auto;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    text-align: left;
-    padding: 20px;
-}
-.banner-content {
-    max-width: 50%;
-}
-.banner h1 {
-    font-size: 32px;
-    margin-bottom: 10px;
-}
-.banner p {
-    font-size: 18px;
-    margin-bottom: 20px;
-}
-.banner button {
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    margin-right: 10px;
-    background-color: #f39c12;
-    color: white;
-    border-radius: 5px;
-    transition: background 0.3s;
-}
-.banner button:hover {
-    background-color: #e67e22;
+  width: 100%;
+  height: 80vh;
+  background: url('./images/product-img/new-arrival/3-copyright.jpg') no-repeat center center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+
+  transition: background-image 1s ease-in-out;
 }
 
+.banner-content {
+  max-width: 700px;
+
+  padding: 40px;
+  border-radius: 10px;
+  color: #fff;
+}
+
+.banner h4 {
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  color: #f4a261;
+}
+
+.banner h1 {
+  font-size: 42px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.banner-btn-group {
+  margin-top: 20px;
+}
+
+.banner-btn {
+  display: inline-block;
+  padding: 12px 25px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 5px;
+  text-decoration: none;
+  margin: 10px;
+  transition: all 0.3s ease;
+}
+
+.banner-btn-primary {
+  background: #f4a261;
+  color: #fff;
+  border: 2px solid #f4a261;
+}
+
+.banner-btn-primary:hover {
+  background: transparent;
+  color: #f4a261;
+}
+
+.banner-btn-secondary {
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+}
+
+.banner-btn-secondary:hover {
+  background: #fff;
+  color: #000;
+}
+
+@media (max-width: 768px) {
+  .banner h1 {
+      font-size: 32px;
+  }
+  .banner-btn {
+      padding: 10px 20px;
+      font-size: 14px;
+  }
+}
+
+.arrivals-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 50px 5%;
+}
+
+.arrival-item {
+  width: 30%;
+  height: 350px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.4s ease-in-out;
+}
+
+.arrival-item:hover {
+  transform: scale(1.05);
+}
+
+.arrival-text {
+  position: absolute;
+  bottom: 15px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 8px 15px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 5px;
+}
+
+@media (max-width: 900px) {
+  .arrivals-section {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .arrival-item {
+      width: 90%;
+      height: 250px;
+  }
+}
 
 .profile-dropdown {
     position: relative;
