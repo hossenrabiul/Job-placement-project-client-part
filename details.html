@@ -4,11 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Product Details</title>
+  
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
       body {
         font-family: Arial, sans-serif;
         margin: 0;
-        padding: 20px;
+        padding: 0;
         background-color: #f8f8f8;
       }
       .container {
@@ -113,6 +115,17 @@
     </style>
   </head>
   <body>
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto flex items-center justify-between px-4 py-4">
+          <div class="text-2xl font-bold text-gray-700">Sport Club</div>
+  
+          <div id="upper-header-authentication"></div>
+          
+          <div class="flex gap-8">
+            <div id="header-authentication"></div>
+          </div>
+        </div>
+      </header>
     <div id="post-details">
        
     </div>
@@ -129,6 +142,7 @@
         ).toFixed(2)}`;
       }
     </script>
+    <script src="navbar.js"></script>
     <script src="details.js"></script>
   </body>
 </html>
