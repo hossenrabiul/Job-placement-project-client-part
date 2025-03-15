@@ -15,19 +15,56 @@ async function fetchPostDetails() {
         const parent = document.getElementById("post-details")
         // console.log(post)
         div.innerHTML = `
-            <img id="post-image" src="${post.image}" alt="Post Image" class="w-full h-64 object-cover rounded-lg shadow-md mb-4">
-            <h2 id="post-title" class="text-3xl font-bold text-gray-800 mb-4">${post.name}</h2>
-            <h2 id="post-title" class="text-3xl font-bold text-gray-800 mb-4">${post.descirption}</h2>
-            <p id="post-content" class="text-gray-700 leading-relaxed">$${post.price}</p>
-            <p id="post-content" class="text-gray-700 leading-relaxed">${post.rating}</p>
-            <div class="p-4">
-                <button class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-700 add-to-cart" data-id="${post.id}" data-name="${post.name}" data-price="${post.price}">Add To Cart</button>
-               
+          
+             <div class="container">
+            <div class="image-section">
+                <img src="${post.image}" alt="Product">
             </div>
+            <div class="details">
+                <h2>${post.name}</h2>
+                <p class="price">$${post.price}.00</p>
+                <p class="description">${post.descirption}</p>
+            
+                <div class="select-box">
+                    <label for="color"><strong>Choose Color:</strong></label>
+                    <select id="color">
+                        <option value="red">Red</option>
+                        <option value="blue">Blue</option>
+                        <option value="green">Green</option>
+                    </select>
+                </div>
+            
+                <div class="select-box">
+                    <label for="material"><strong>Choose Material:</strong></label>
+                    <select id="material">
+                        <option value="cotton">Cotton</option>
+                        <option value="leather">Leather</option>
+                        <option value="plastic">Plastic</option>
+                    </select>
+                </div>
+            
+                <p class="price" id="total-price">Total: ${post.price}</p>
+            
+                <div class="bottom-actions">
+                    <div class="quantity-selector">
+                        <button onclick="changeQuantity(-1)">-</button>
+                        <span id="quantity">1</span>
+                        <button onclick="changeQuantity(1)">+</button>
+                    </div>
+                    <button class="buy-now add-to-cart" data-id="${post.id}" data-name="${post.name}" data-price="${post.price}">Buy Now</button>
+                </div>
+            </div>
+        </div>
+    
+
+      </div>
+
+
         `;
-        
+    
         parent.appendChild(div)
         console.log(parent)
+        // 
         // document.getElementById('post-image').src = post.image;
         // document.getElementById('post-title').textContent = post.title;
         // document.getElementById('post-content').textContent = post.content;

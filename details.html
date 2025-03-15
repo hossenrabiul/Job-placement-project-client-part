@@ -1,25 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post Details</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen py-16">
-    <div class="bg-white shadow-lg rounded-lg p-6 w-full max-w-2xl">
-        <button onclick="goBack()" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300 mb-4">
-            ← Back
-        </button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Details</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f8f8f8;
+      }
+      .container {
+        display: flex;
+        max-width: 1200px;
+        margin: auto;
+        background: white;
+        padding: 30px;
 
-        <div id="post-details" class="text-center">
-            <!-- <img id="post-image" src="" alt="Post Image" class="w-full h-64 object-cover rounded-lg shadow-md mb-4">
-            <h2 id="post-title" class="text-3xl font-bold text-gray-800 mb-4"></h2>
-            <p id="post-content" class="text-gray-700 leading-relaxed"></p> -->
-        </div>
+        width: 100%;
+        gap: 30px;
+      }
+      .image-section img {
+        width: 100%;
+        max-width: 500px;
+        border-radius: 12px;
+     
+        padding: 20px;
+      }
+      .details {
+        flex: 1;
+      }
+      .details h2 {
+        margin: 0 0 15px;
+        font-size: 34px;
+        font-weight: bold;
+        color: #222;
+        border-bottom: 2px solid #ddd;
+        padding-bottom: 10px;
+      }
+      .price {
+        font-size: 28px;
+        font-weight: bold;
+        color: #e63946;
+        margin: 15px 0;
+      }
+      .description {
+        font-size: 16px;
+        color: #444;
+        line-height: 1.8;
+        margin-bottom: 25px;
+        background: #f9f9f9;
+        padding: 15px;
+        border-radius: 8px;
+        text-align: justify;
+      }
+      .select-box {
+        margin-bottom: 20px;
+      }
+      select {
+        padding: 12px;
+        width: 40%;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+        background: white;
+        cursor: pointer;
+      }
+      .bottom-actions {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin-top: 20px;
+      }
+      .quantity-selector {
+        display: flex;
+        align-items: center;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        overflow: hidden;
+        background: white;
+      }
+      .quantity-selector button {
+        padding: 10px 15px;
+        border: none;
+        background: #007bff;
+        color: white;
+        font-size: 18px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .quantity-selector button:hover {
+        background: #0056b3;
+      }
+      .quantity-selector span {
+        padding: 0 20px;
+        font-size: 18px;
+      }
+      .buy-now {
+        padding: 12px 24px;
+        background: #e63946;
+        color: white;
+        font-size: 18px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .buy-now:hover {
+        background: #b02a37;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="post-details">
+       
     </div>
 
-    <script src="navbar.js"></script>
+    <script>
+      let quantity = 1;
+      const price = 199.99;
+
+      function changeQuantity(amount) {
+        quantity = Math.max(1, quantity + amount);
+        document.getElementById("quantity").textContent = quantity;
+        document.getElementById("total-price").textContent = `Total: $${(
+          price * quantity
+        ).toFixed(2)}`;
+      }
+    </script>
     <script src="details.js"></script>
-</body>
+  </body>
 </html>
