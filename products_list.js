@@ -6,7 +6,7 @@ const user_id = localStorage.getItem("user_id");
 // console.log(user_id); 
 const productLoad = (slug) => {
 
-  const parent = document.getElementById("products-details").innerHTML = "";
+  const parent = document.querySelector('.products-section').innerHTML = "";
   // fetch(`https://sporting-server-xi.vercel.app/posts/postlist/${slug}/`)
   fetch(`https://sporting-server-xi.vercel.app/posts/postlist/${slug ? slug + '/' : ''}`)
     
@@ -21,35 +21,33 @@ const productLoad = (slug) => {
 
 const displayProduct = (products) => {
     // console.log(products);
-  const parent = document.getElementById("products-details");
-  const secondParent = document.getElementById("new-arrival");
-  parent.innerHTML = ""; 
+   console.log(products);
+   const productsSection = document.querySelector('.products-section');
 
-  products.forEach((product) => {
-    // console.log(product.id);
-    const div = document.createElement("div");
-  
-    // const imageUrl = product.image.startsWith("http") ? product.image : `${baseURL}${product.image}`;
+   // Clear any existing content inside products-section
+   productsSection.innerHTML = '';
 
-    // const descriptionText = (product.description || "").trim();
-    // const descriptionWords = descriptionText.split(/\s+/).slice(0, 5).join(" ") + "...";
+   // Loop through the products and generate HTML
+   products.forEach(product => {
+       const productHTML = `
+           <div class="product-box">
+               <div class="product-item" style="background-image: url('${product.image}');">
+                   <div class="overlay">
+                       <i class="cart-icon add-to-cart" data-id="${product.id}" data-image = "${product.image}"  data-name="${product.name}" data-price="${product.price}" data-stock="${product.storkQuantity}">🛒</i>
+                       <i class="like-icon" onclick="goToLikePage('alproductsDetails.html?id=${product.id}')">➡️</i>
+                   </div>
+               </div>
+               <div class="product-details">
+                   <div class="product-name">${product.name}</div>
+                   <div class="product-price">$${product.price.toFixed(2)}</div>
+                   <div class="product-rating">★★★★★</div>
+               </div>
+           </div>
+       `;
 
-    div.innerHTML = `
-        <div class="bg-white shadow-lg rounded-lg p-3">
-            <img src="${product.image}" alt="Product Image" class="w-full h-40 object-cover rounded-lg">
-            <h2 class="text-lg font-semibold mt-3">${product.name}</h2>
-           
-            <p class="text-md font-bold text-gray-900 mt-1">$${product.price}</p>
-            <p class="text-yellow-500 mt-1">${product.rating}</p>
-            <div class="flex justify-between mt-3">
-                <a href="details.html?id=${product.id}" class="bg-gray-600 text-white px-3 py-1.5 rounded-lg hover:bg-gray-700 text-sm">Details</a>
-                <button class="bg-blue-600 text-white px-3 py-1.5 rounded-lg hover:bg-blue-700 text-sm add-to-cart" data-id="${product.id}" data-name="${product.name}" data-price="${product.price}">Add To Cart</button>
-            </div>
-        </div>
-    `;
-    parent.appendChild(div);
-  });
-
+       // Add the product HTML to the container
+       productsSection.innerHTML += productHTML;
+   });
 
   document.querySelectorAll(".add-to-cart").forEach((button) => {
     // console.log("Yes")

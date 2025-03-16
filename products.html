@@ -64,20 +64,17 @@
             </div>
         </div>
 
-        <div id="products-details" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"></div>
+        <!-- <div id="products-details" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"></div> -->
+        <div class="products-section">
+      
+   
+        </div>
     </div>
     
 
     
         
 
-    </div>
-
-
-    <div class="container mx-auto px-4 py-8">
-        <h2 class="text-3xl font-bold text-center mb-6">New Arrivals</h2>
-        <div id="new-arrival" class="grid grid-cols-1 md:grid-cols-3 gap-4 justify-center">
-        </div>
     </div>
 
     <section class="new-arrival-section">
@@ -133,9 +130,18 @@
         
     </footer>
 
+    <script>
+      function goToCardPage(pageUrl) {
+          location.href = pageUrl; // Redirect to the product page
+      }
+
+      function goToLikePage(pageUrl) {
+          location.href = pageUrl; // Redirect to the liked products page
+      }
+  </script>
+
     <script src="navbar.js"></script>
     <script src="products_list.js"></script>
-    <script src="newProducts.js"></script>
     <script src="footer.js"></script>
 
 </html>
