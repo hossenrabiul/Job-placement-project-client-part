@@ -1,54 +1,53 @@
 
 // const baseURL = "https://sporting-server-xi.vercel.app/posts/postlist/";
 // const baseURL = `http://127.0.0.1:8000/posts/postlist/?search=${search?search : ""}`;
-const user_idd = localStorage.getItem("user_id");
+const user_id = localStorage.getItem("user_id");
 
 // console.log(user_id); 
-const newproductLoad = (slug) => {
+const productLoad = (slug) => {
 
   const parent = document.querySelector('.products-section').innerHTML = "";
   // fetch(`https://sporting-server-xi.vercel.app/posts/postlist/${slug}/`)
-  fetch(`https://sporting-server-xi.vercel.app/posts/newpostlist/`)
+  fetch(`https://sporting-server-xi.vercel.app/posts/newpostlist/${slug ? slug + '/' : ''}`)
     
     .then((res) => res.json())
     // .then((data) => console.log(data))
-    .then((data) => displaynewProduct(data))
+    .then((data) => displayProduct(data))
    
     // .then((data) => console.log(data))
     .catch((error) => console.error("Error fetching data:", error));
 };
 
 
-const displaynewProduct = (products) => {
+const displayProduct = (products) => {
     // console.log(products);
-    const productsSection = document.querySelector('.products-section');
+   console.log(products);
+   const productsSection = document.querySelector('.products-section');
 
-    // Clear any existing content inside products-section
-    productsSection.innerHTML = '';
+   // Clear any existing content inside products-section
+   productsSection.innerHTML = '';
 
-    // Loop through the products and generate HTML
-    products.forEach(product => {
-        const productHTML = `
-            <div class="product-box">
-                <div class="product-item" style="background-image: url('${product.image}');">
-                    <div class="overlay">
-                        <i class="cart-icon add-to-cart" data-id="${product.id}" data-image = "${product.image}"  data-name="${product.name}" data-price="${product.price}" data-stock="${product.storkQuantity}">🛒</i>
-                        <i class="like-icon" onclick="goToLikePage('details.html?id=${product.id}')">➡️</i>
-                    </div>
-                </div>
-                <div class="product-details">
-                    <div class="product-name">${product.name}</div>
-                    <div class="product-price">$${product.price.toFixed(2)}</div>
-                    <div class="product-rating">★★★★★</div>
-                </div>
-            </div>
-        `;
+   // Loop through the products and generate HTML
+   products.forEach(product => {
+       const productHTML = `
+           <div class="product-box">
+               <div class="product-item" style="background-image: url('${product.image}');">
+                   <div class="overlay">
+                       <i class="cart-icon add-to-cart" data-id="${product.id}" data-image = "${product.image}"  data-name="${product.name}" data-price="${product.price}" data-stock="${product.storkQuantity}">🛒</i>
+                       <i class="like-icon" onclick="goToLikePage('details.html?id=${product.id}')">➡️</i>
+                   </div>
+               </div>
+               <div class="product-details">
+                   <div class="product-name">${product.name}</div>
+                   <div class="product-price">$${product.price.toFixed(2)}</div>
+                   <div class="product-rating">★★★★★</div>
+               </div>
+           </div>
+       `;
 
-        // Add the product HTML to the container
-        productsSection.innerHTML += productHTML;
-    });
-
-
+       // Add the product HTML to the container
+       productsSection.innerHTML += productHTML;
+   });
 
   document.querySelectorAll(".add-to-cart").forEach((button) => {
     // console.log("Yes")
@@ -61,13 +60,13 @@ const displaynewProduct = (products) => {
         stock: parseInt(event.target.dataset.storkQuantity),
         quantity: 1, // Default quantity
       };
-      addToCartt(product);
+      addToCart(product);
     });
   });
 
 }
 
-const addToCartt = (product) => {
+const addToCart = (product) => {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
   const existingProduct = cart.find((item) => item.id === product.id);
 
@@ -86,28 +85,35 @@ const addToCartt = (product) => {
 };
 
 
-newproductLoad();
+productLoad();
 
 
 
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    
-  fetchCategoriess();
+  fetchCategories();
 });
 
-function fetchCategoriess() {
+
+function fetchCategories() {
+  
   fetch("https://sporting-server-xi.vercel.app/category/categoryView/") // Replace with your actual API URL
+      
       .then(response => response.json())
+      
       .then(categories => {
-          const dropdown = document.getElementById("category-dropdow").querySelector("ul");
+     
+          // console.log(categories)
+          const dropdown = document.getElementById("category-dropdown").querySelector("ul");
           dropdown.innerHTML = ""; // Clear previous categories
+
           categories.forEach(category => {
+           
               const listItem = document.createElement("li");
               listItem.classList.add("hover:bg-gray-100", "px-4", "py-2", "cursor-pointer");
               listItem.textContent = category.name
-              
+            
               listItem.addEventListener("click", function () {
                   console.log(`Selected category: ${category.name}`);
                   productLoad(category.slug)
@@ -132,6 +138,7 @@ function fetchCategoriess() {
       })
       .catch(error => console.error("Error fetching categories:", error));
 }
+
 
 
 
