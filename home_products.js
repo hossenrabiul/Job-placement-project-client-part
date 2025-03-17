@@ -34,13 +34,13 @@ const displayProduct = (products) => {
                <div class="product-item" style="background-image: url('${product.image}');">
                    <div class="overlay">
                        <i class="cart-icon add-to-cart" data-id="${product.id}" data-image = "${product.image}"  data-name="${product.name}" data-price="${product.price}" data-stock="${product.storkQuantity}">🛒</i>
-                       <i class="like-icon" onclick="goToLikePage('details.html?id=${product.id}')">➡️</i>
+                       <i class="like-icon" onclick="goToLikePage('allproductsDetails.html?id=${product.id}')">➡️</i>
                    </div>
                </div>
                <div class="product-details">
                    <div class="product-name">${product.name}</div>
                    <div class="product-price">$${product.price.toFixed(2)}</div>
-                   <div class="product-rating">★★★★★</div>
+                   <div class="product-rating">${product.rating}</div>
                </div>
            </div>
        `;

@@ -6,7 +6,7 @@ const user_id = localStorage.getItem("user_id");
 // console.log(user_id); 
 const productLoad = (slug) => {
 
-  const parent = document.querySelector('.products-section').innerHTML = "";
+  const parent = document.querySelector('.products').innerHTML = "";
   // fetch(`https://sporting-server-xi.vercel.app/posts/postlist/${slug}/`)
   fetch(`https://sporting-server-xi.vercel.app/posts/postlist/${slug ? slug + '/' : ''}`)
     
@@ -22,7 +22,7 @@ const productLoad = (slug) => {
 const displayProduct = (products) => {
     // console.log(products);
    console.log(products);
-   const productsSection = document.querySelector('.products-section');
+   const productsSection = document.querySelector('.products');
 
    // Clear any existing content inside products-section
    productsSection.innerHTML = '';
@@ -30,19 +30,20 @@ const displayProduct = (products) => {
    // Loop through the products and generate HTML
    products.forEach(product => {
        const productHTML = `
-           <div class="product-box">
-               <div class="product-item" style="background-image: url('${product.image}');">
-                   <div class="overlay">
-                       <i class="cart-icon add-to-cart" data-id="${product.id}" data-image = "${product.image}"  data-name="${product.name}" data-price="${product.price}" data-stock="${product.storkQuantity}">🛒</i>
-                       <i class="like-icon" onclick="goToLikePage('alproductsDetails.html?id=${product.id}')">➡️</i>
-                   </div>
-               </div>
-               <div class="product-details">
-                   <div class="product-name">${product.name}</div>
-                   <div class="product-price">$${product.price.toFixed(2)}</div>
-                   <div class="product-rating">★★★★★</div>
-               </div>
-           </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="${product.image}" alt="Product 1" />
+                    <div class="overlay">
+                        <i class="cart-icon add-to-cart" data-id="${product.id}" data-image = "${product.image}"  data-name="${product.name}" data-price="${product.price}" data-stock="${product.storkQuantity}">🛒</i>
+                        <i class="like-icon" onclick="goToLikePage('alproductsDetails.html?id=${product.id}')">➡️</i>
+                    </div>
+                </div>
+                <div class="product-details">
+                    <h3>${product.name}</h3>
+                    <p>$${product.price}</p>
+                    <p>${product.rating}</p>
+                </div>
+            </div>
        `;
 
        // Add the product HTML to the container
