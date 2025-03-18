@@ -171,6 +171,29 @@ body {
 }
 
 
+.headline-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.headline-shop {
+  font-size: 18px;
+  color: #ff6b6b;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.headline-new-arrivals {
+  font-size: 48px; /* Bigger and Bolder */
+  color: #2d3436;
+  font-weight: 900; /* Extra bold */
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
 .products-section {
   width: 100%;
   display: flex;
