@@ -82,7 +82,7 @@
     </section>
 
     <section class="shop-container">
-      <div class="products">
+      <div class="products" id="productContainer">
         <!-- Product Cards Here -->
         <!-- <div class="product-card">
             <div class="product-image">
@@ -173,12 +173,10 @@
         <h3>Search</h3>
         <input type="text" placeholder="Search products..." />
         <h3>Categories</h3>
-        <ul>
-          <li>Category 1</li>
-          <li>Category 2</li>
-          <li>Category 3</li>
-          <li>Category 4</li>
-          <li>Category 5</li>
+        <ul id="category-dropdown">
+          <ul>
+
+          </ul>
         </ul>
         <h3>Price Range</h3>
         <input type="range" min="10" max="100" value="50" />
@@ -192,10 +190,11 @@
         <button class="filter-btn">Apply Filter</button>
       </div>
     </section>
-
-    
-        
-
+    <div class="pagination" id="paginationContainer">
+      <button id="prevPage" class="page-btn">&lt;</button>
+      <div id="pageNumbers"></div>
+      <button id="nextPage" class="page-btn">&gt;</button>
+    </div>
     </div>
 
     <section class="new-arrival-section">
@@ -247,6 +246,8 @@
         </div>
       </section>
 
+
+
     <footer>
         
     </footer>
@@ -260,6 +261,63 @@
           location.href = pageUrl; // Redirect to the liked products page
       }
   </script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const productsPerPage = 4;
+    let currentPage = 1;
+
+    const productContainer = document.getElementById("productContainer");
+    const paginationContainer = document.getElementById("pageNumbers");
+
+    const products = [...document.querySelectorAll(".product-card")];
+    const totalPages = Math.ceil(products.length / productsPerPage);
+
+    function renderProducts() {
+      productContainer.innerHTML = "";
+      const start = (currentPage - 1) * productsPerPage;
+      const end = start + productsPerPage;
+
+      products.slice(start, end).forEach((product) => {
+        productContainer.appendChild(product);
+      });
+
+      updatePagination();
+    }
+
+    function updatePagination() {
+      paginationContainer.innerHTML = "";
+      for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement("button");
+        btn.innerText = i;
+        btn.classList.add("page-btn");
+        if (i === currentPage) btn.classList.add("active");
+        btn.addEventListener("click", () => {
+          currentPage = i;
+          renderProducts();
+        });
+        paginationContainer.appendChild(btn);
+      }
+    }
+
+    document.getElementById("prevPage").addEventListener("click", () => {
+      if (currentPage > 1) {
+        currentPage--;
+        renderProducts();
+      }
+    });
+
+    document.getElementById("nextPage").addEventListener("click", () => {
+      if (currentPage < totalPages) {
+        currentPage++;
+        renderProducts();
+      }
+    });
+
+    renderProducts();
+  });
+</script>
+
 
     <script src="navbar.js"></script>
     <script src="products_list.js"></script>
