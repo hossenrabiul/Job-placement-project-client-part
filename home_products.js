@@ -8,7 +8,7 @@ const productLoad = (slug) => {
 
   const parent = document.querySelector('.products-section').innerHTML = "";
   // fetch(`https://sporting-server-xi.vercel.app/posts/postlist/${slug}/`)
-  fetch(`http://127.0.0.1:8000/posts/newpostlist/${slug ? slug + '/' : ''}`)
+  fetch(`https://sporting-server-xi.vercel.app/posts/newpostlist/${slug ? slug + '/' : ''}`)
     
     .then((res) => res.json())
     // .then((data) => console.log(data))
