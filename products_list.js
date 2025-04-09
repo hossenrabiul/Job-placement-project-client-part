@@ -9,7 +9,7 @@ const productLoad = (slug = '', search = '', page = 1) => {
   // console.log(page)
 
   const parent = document.querySelector('.products').innerHTML = "";
-  let url = `http://127.0.0.1:8000/posts/postlist/?page=${page}`
+  let url = `https://sporting-server-xi.vercel.app/posts/postlist/?page=${page}`
 
   if (slug){
     url += `${slug}/`;
