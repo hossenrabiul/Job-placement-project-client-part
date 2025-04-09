@@ -2,26 +2,60 @@
 // const baseURL = "https://sporting-server-xi.vercel.app/posts/postlist/";
 // const baseURL = `http://127.0.0.1:8000/posts/postlist/?search=${search?search : ""}`;
 const user_id = localStorage.getItem("user_id");
-
+let currentPage = 1
+// console.log(currentPage)
 // console.log(user_id); 
-const productLoad = (slug) => {
+const productLoad = (slug = '', search = '', page = 1) => {
+  // console.log(page)
 
   const parent = document.querySelector('.products').innerHTML = "";
+  let url = `https://sporting-server-xi.vercel.app/posts/postlist/?page=${page}`
+
+  if (slug){
+    url += `${slug}/`;
+  }
+  else if(search){
+    url += `?search=${search}`;
+   
+  }
+  console.log(url)
   // fetch(`https://sporting-server-xi.vercel.app/posts/postlist/${slug}/`)
-  fetch(`https://sporting-server-xi.vercel.app/posts/postlist/${slug ? slug + '/' : ''}`)
+  // fetch(`https://sporting-server-xi.vercel.app/posts/postlist/${slug ? slug + '/' : ''}`)
+  fetch(url)
     
     .then((res) => res.json())
     // .then((data) => console.log(data))
-    .then((data) => displayProduct(data))
+    .then((data) => displayProduct(data.results))
    
+    
     // .then((data) => console.log(data))
     .catch((error) => console.error("Error fetching data:", error));
+
+    // document.getElementById('prevPage').disabled = !data.previous;
+    // document.getElementById('nextPage').disabled = !data.next;
+
+    
 };
+
+
+document.getElementById("prevPage").addEventListener("click", () => {
+  if (currentPage > 1) {
+    currentPage = currentPage - 1
+    console.log(currentPage)
+    productLoad('', '', currentPage);
+  }
+});
+
+document.getElementById("nextPage").addEventListener("click", () => {
+  currentPage = currentPage + 1
+  console.log(currentPage)
+  productLoad('', '', currentPage);
+});
 
 
 const displayProduct = (products) => {
     // console.log(products);
-   console.log(products);
+  
    const productsSection = document.querySelector('.products');
 
    // Clear any existing content inside products-section
@@ -45,7 +79,7 @@ const displayProduct = (products) => {
                 </div>
             </div>
        `;
-
+       
        // Add the product HTML to the container
        productsSection.innerHTML += productHTML;
    });
@@ -91,9 +125,16 @@ productLoad();
 
 
 
+document.getElementById("search-btn").addEventListener("click", function () {
+  const searchQuery = document.getElementById("search-input").value.trim();
+  console.log("Hd")
+  productLoad("", searchQuery); // Fetch products based on the search term
+});
+
 
 document.addEventListener("DOMContentLoaded", function () {
   fetchCategories();
+  
 });
 
 
@@ -105,7 +146,7 @@ function fetchCategories() {
       
       .then(categories => {
      
-          // console.log(categories)
+          console.log(categories)
           const dropdown = document.getElementById("category-dropdown").querySelector("ul");
           dropdown.innerHTML = ""; // Clear previous categories
 

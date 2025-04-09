@@ -17,6 +17,7 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
         document.getElementById('message').textContent = "Login successful!";
         document.getElementById('message').classList.remove('text-red-600');
         document.getElementById('message').classList.add('text-green-600');
+        window.location.href = 'index.html'
     } else {
         console.log("Ye")
         document.getElementById('message').textContent = data.error || "Login failed!";

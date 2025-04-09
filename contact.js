@@ -1,24 +1,38 @@
-document.querySelector('.submit-btn').addEventListener('click', function(e) {
-    e.preventDefault();
-   
-    const data = {
-        name: document.querySelector('[name="name"]').value,
-        email: document.querySelector('[name="email"]').value,
-        phone: document.querySelector('[name="phone"]').value,
-        subject: document.querySelector('[name="subject"]').value,
-        message: document.querySelector('[name="message"]').value
-    };
-    console.log(name)
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector(".contact-form form");
 
-    fetch('http://127.0.0.1:8000/accounts/contact/', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data)
-    })
-    .then(response => response.json())
-    .then(data => alert(data.message))
-    console.log(data.message)
-    .catch(error => console.error('Error:', error));
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const formData = {
+            name: form.querySelector("input[placeholder='Name']").value,
+            email: form.querySelector("input[placeholder='Email Address']").value,
+            phone: form.querySelector("input[placeholder='Phone']").value,
+            subject: form.querySelector("input[placeholder='Subject']").value,
+            message: form.querySelector("textarea").value,
+        };
+
+        fetch("https://sporting-server-xi.vercel.app/accounts/contact/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data)
+            alert("Message sent successfully!");
+            form.reset();
+        })
+        .catch(error => {
+            console.error("There was a problem with the fetch operation:", error);
+            alert("Failed to send message. Please try again later.");
+        });
+    });
 });

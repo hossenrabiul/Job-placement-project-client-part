@@ -1,7 +1,4 @@
-   
-   
-   
-   
+
    // JavaScript for Carousel-Like Transitions
    const reviews = document.querySelectorAll('.review');
    let currentIndex = 0;
